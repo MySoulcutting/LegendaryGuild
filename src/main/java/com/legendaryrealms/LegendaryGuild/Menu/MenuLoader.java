@@ -1,9 +1,10 @@
 package com.legendaryrealms.LegendaryGuild.Menu;
 
+import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XSound;
 import com.legendaryrealms.LegendaryGuild.Files.FileProvider;
 import com.legendaryrealms.LegendaryGuild.LegendaryGuild;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -13,7 +14,7 @@ import java.util.logging.Level;
 public abstract class MenuLoader extends FileProvider {
 
     private String title;
-    private Optional<Sound> sound;
+    private Optional<XSound> sound;
     private int size;
     public HashMap<Integer,MenuItem> item;
     public HashMap<String,String> placeholder;
@@ -53,7 +54,7 @@ public abstract class MenuLoader extends FileProvider {
         getSection("customItem").ifPresent(sec -> {
             for (String key:sec.getKeys(false)){
                 String display = legendaryGuild.color(sec.getString(key+".display",""));
-                Material material = getMaterial(sec.getString(key+".material","STONE"));
+                XMaterial material = getMaterial(sec.getString(key+".material","STONE"));
                 int amount = sec.getInt(key+".amount",1);
                 int data = sec.getInt(key+".data",0);
                 int model = sec.getInt(key+".model",0);
@@ -61,7 +62,7 @@ public abstract class MenuLoader extends FileProvider {
                 String fuction = sec.getString(key+".fuction.type","none");
                 String value = sec.getString(key+".fuction.value","");
 
-                ItemStack i = new ItemStack(material,amount,(short) data);
+                ItemStack i = new ItemStack(material.parseMaterial(),amount,(short) data);
                 ItemMeta id = i.getItemMeta();
                 id.setDisplayName(display);
                 id.setLore(lore);
@@ -84,7 +85,7 @@ public abstract class MenuLoader extends FileProvider {
 
     }
 
-    public Optional<Sound> getSound() {
+    public Optional<XSound> getSound() {
         return sound;
     }
 
@@ -112,26 +113,26 @@ public abstract class MenuLoader extends FileProvider {
         return placeholder.get(key) != null ? placeholder.get(key) : "";
     }
 
-    private Optional<Sound> getSound(String sound){
+    private Optional<XSound> getSound(String sound){
         if (sound == null){
             return Optional.empty();
         }
         try {
-            return Optional.of(Sound.valueOf(sound.toUpperCase()));
+            return Optional.of(XSound.of(sound.toUpperCase()).get());
         } catch (Exception e){
             legendaryGuild.info("音效ID出错！"+file.getName()+ "-> "+sound, Level.SEVERE);
             return Optional.empty();
         }
     }
 
-    public Material getMaterial(String arg){
-        String str=arg.toUpperCase();
-        Material material = Material.getMaterial(str);
-        if (material == null){
-            material = Material.STONE;
+    public XMaterial getMaterial(String arg){
+        String str = arg.toUpperCase();
+        XMaterial xMaterial = XMaterial.matchXMaterial(str).get();
+        if (xMaterial == null){
+            xMaterial = XMaterial.matchXMaterial(Material.STONE);
             legendaryGuild.info("ID配置出错！"+file.getName()+" 该版本不存在该物品ID: "+arg,Level.SEVERE);
         }
-        return material;
+        return xMaterial;
     }
 
     public List<Integer> deserializeSlot(String str){

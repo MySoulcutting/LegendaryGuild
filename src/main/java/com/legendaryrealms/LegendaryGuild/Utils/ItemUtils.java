@@ -1,7 +1,8 @@
 package com.legendaryrealms.LegendaryGuild.Utils;
 
+import com.cryptomorin.xseries.XMaterial;
 import com.legendaryrealms.LegendaryGuild.LegendaryGuild;
-import org.bukkit.Keyed;
+
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -9,7 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +47,7 @@ public class ItemUtils {
     private static final LegendaryGuild legendaryGuild = LegendaryGuild.getInstance();
 
     public static ItemStack readItem(ConfigurationSection yml, String path){
-        ItemStack i = new ItemStack(getMaterial(yml.getString(path+".material","APPLE")), yml.getInt(path+".amount",1),(short)yml.getInt(path+".data",0));
+        ItemStack i = new ItemStack(getMaterial(yml.getString(path+".material","APPLE")).parseMaterial(), yml.getInt(path+".amount",1),(short)yml.getInt(path+".data",0));
         ItemMeta id = i.getItemMeta();
         id.setDisplayName(legendaryGuild.color(yml.getString(path+".display","&f ")));
         List<String> lore = legendaryGuild.color(yml.getStringList(path+".lore"));
@@ -59,7 +60,7 @@ public class ItemUtils {
     }
 
     public static ItemStack readItem(YamlConfiguration yml, String path){
-        ItemStack i = new ItemStack(getMaterial(yml.getString(path+".material","APPLE")), yml.getInt(path+".amount",1),(short)yml.getInt(path+".data",0));
+        ItemStack i = new ItemStack(getMaterial(yml.getString(path+".material","APPLE")).parseMaterial(), yml.getInt(path+".amount",1),(short)yml.getInt(path+".data",0));
         ItemMeta id = i.getItemMeta();
         id.setDisplayName(legendaryGuild.color(yml.getString(path+".display","&f ")));
         List<String> lore = legendaryGuild.color(yml.getStringList(path+".lore"));
@@ -71,14 +72,14 @@ public class ItemUtils {
         return i;
     }
 
-    public static Material getMaterial(String arg){
-        String str=arg.toUpperCase();
-        Material material = Material.getMaterial(arg);
-        if (material == null){
-            material = Material.STONE;
-            legendaryGuild.info("ID配置出错！该版本不存在该物品ID: "+arg, Level.SEVERE);
+    public static XMaterial getMaterial(String arg){
+        String str = arg.toUpperCase();
+        XMaterial xMaterial = XMaterial.matchXMaterial(str).get();
+        if (xMaterial == null){
+            xMaterial = XMaterial.matchXMaterial(Material.STONE);
+            legendaryGuild.info("ID配置出错！ 该版本不存在该物品ID: "+arg,Level.SEVERE);
         }
-        return material;
+        return xMaterial;
     }
 
     public static int hasPlayerMcItem(Player p, Material id, int ziid) {

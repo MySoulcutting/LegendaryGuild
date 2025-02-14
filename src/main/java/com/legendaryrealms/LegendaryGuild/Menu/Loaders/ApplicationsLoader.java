@@ -1,5 +1,6 @@
 package com.legendaryrealms.LegendaryGuild.Menu.Loaders;
 
+import com.cryptomorin.xseries.XMaterial;
 import com.legendaryrealms.LegendaryGuild.LegendaryGuild;
 import com.legendaryrealms.LegendaryGuild.Menu.MenuLoader;
 import org.bukkit.Material;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApplicationsLoader extends MenuLoader {
-    private Material app_icon;
+    private XMaterial app_icon;
     private int app_data;
     private int app_model;
     private String app_display;
@@ -27,7 +28,7 @@ public class ApplicationsLoader extends MenuLoader {
         app_lore = legendaryGuild.color(getValue("playeritem.lore",new ArrayList<>()));
     }
 
-    public Material getApp_icon() {
+    public XMaterial getApp_icon() {
         return app_icon;
     }
 

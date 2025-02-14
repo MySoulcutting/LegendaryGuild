@@ -3,17 +3,18 @@ package com.legendaryrealms.LegendaryGuild.Menu.Loaders;
 import com.legendaryrealms.LegendaryGuild.LegendaryGuild;
 import com.legendaryrealms.LegendaryGuild.Menu.MenuLoader;
 import org.bukkit.Material;
+import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StoresLoader extends MenuLoader {
-    private Material store_icon_unlock;
+    private XMaterial store_icon_unlock;
     private String store_display_unlock;
     private int store_data_unlock;
     private int store_model_unlock;
     private List<String> store_lore_unlock;
-    private Material store_icon_locked;
+    private XMaterial store_icon_locked;
     private String store_display_locked;
     private int store_data_locked;
     private int store_model_locked;
@@ -39,7 +40,7 @@ public class StoresLoader extends MenuLoader {
         store_lore_locked = legendaryGuild.color(getValue("store_item_locked.lore", new ArrayList<>()));
     }
 
-    public Material getStore_icon_unlock() {
+    public XMaterial getStore_icon_unlock() {
         return store_icon_unlock;
     }
 
@@ -59,7 +60,7 @@ public class StoresLoader extends MenuLoader {
         return store_lore_unlock;
     }
 
-    public Material getStore_icon_locked() {
+    public XMaterial getStore_icon_locked() {
         return store_icon_locked;
     }
 

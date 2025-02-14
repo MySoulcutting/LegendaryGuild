@@ -67,7 +67,7 @@ public class MembersPanel extends MenuDraw {
                             targetUser.update(false);
                         }
 
-                        ItemStack i =new ItemStack(load.getMm_icon(),1,(short) load.getMm_data());
+                        ItemStack i =new ItemStack(load.getMm_icon().parseMaterial(),1,(short) load.getMm_data());
                         ItemMeta id = i.getItemMeta();
                         id.setDisplayName(load.getMm_display().replace("%player%",target));
                         List<String> lore = load.getMm_lore();

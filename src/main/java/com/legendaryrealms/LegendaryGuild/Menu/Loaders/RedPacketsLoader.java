@@ -3,17 +3,18 @@ package com.legendaryrealms.LegendaryGuild.Menu.Loaders;
 import com.legendaryrealms.LegendaryGuild.LegendaryGuild;
 import com.legendaryrealms.LegendaryGuild.Menu.MenuLoader;
 import org.bukkit.Material;
+import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RedPacketsLoader extends MenuLoader {
-    private Material packet_icon_bef;
+    private XMaterial packet_icon_bef;
     private String packet_display_bef;
     private int packet_data_bef;
     private int packet_model_bef;
     private List<String> packet_lore_bef;
-    private Material packet_icon_after;
+    private XMaterial packet_icon_after;
     private String packet_display_after;
     private int packet_data_after;
     private int packet_model_after;
@@ -37,7 +38,7 @@ public class RedPacketsLoader extends MenuLoader {
         packet_lore_after = legendaryGuild.color(getValue("redpacket_item_after.lore",new ArrayList<>()));
     }
 
-    public Material getPacket_icon_bef() {
+    public XMaterial getPacket_icon_bef() {
         return packet_icon_bef;
     }
 
@@ -57,7 +58,7 @@ public class RedPacketsLoader extends MenuLoader {
         return packet_lore_bef;
     }
 
-    public Material getPacket_icon_after() {
+    public XMaterial getPacket_icon_after() {
         return packet_icon_after;
     }
 

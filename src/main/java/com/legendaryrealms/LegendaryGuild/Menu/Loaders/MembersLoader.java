@@ -3,12 +3,13 @@ package com.legendaryrealms.LegendaryGuild.Menu.Loaders;
 import com.legendaryrealms.LegendaryGuild.LegendaryGuild;
 import com.legendaryrealms.LegendaryGuild.Menu.MenuLoader;
 import org.bukkit.Material;
+import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MembersLoader extends MenuLoader {
-    private Material mm_icon;
+    private XMaterial mm_icon;
     private String mm_display;
     private int mm_data;
     private int mm_model;
@@ -26,7 +27,7 @@ public class MembersLoader extends MenuLoader {
         mm_lore = legendaryGuild.color(getValue("playeritem.lore",new ArrayList<>()));
     }
 
-    public Material getMm_icon() {
+    public XMaterial getMm_icon() {
         return mm_icon;
     }
 

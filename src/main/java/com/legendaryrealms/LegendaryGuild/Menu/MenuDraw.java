@@ -1,13 +1,11 @@
 package com.legendaryrealms.LegendaryGuild.Menu;
 
-import com.legendaryrealms.LegendaryGuild.Data.Others.Buff;
 import com.legendaryrealms.LegendaryGuild.Data.Others.IntStore;
 import com.legendaryrealms.LegendaryGuild.Files.Lang;
 import com.legendaryrealms.LegendaryGuild.LegendaryGuild;
 import com.legendaryrealms.LegendaryGuild.Menu.Panels.GuildMenuPanel;
 import com.legendaryrealms.LegendaryGuild.Utils.RunUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -19,7 +17,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -120,7 +117,7 @@ public abstract class MenuDraw implements InventoryHolder{
 
     public void open(){
         if (loader.getSound().isPresent()){
-            p.playSound(p.getLocation(),loader.getSound().get(),1,1);
+            p.playSound(p.getLocation(),loader.getSound().get().parseSound(), 1,1);
         }
         p.openInventory(inv);
     }

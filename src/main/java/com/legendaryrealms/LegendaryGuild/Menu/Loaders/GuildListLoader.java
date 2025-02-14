@@ -1,15 +1,15 @@
 package com.legendaryrealms.LegendaryGuild.Menu.Loaders;
 
+import com.cryptomorin.xseries.XMaterial;
 import com.legendaryrealms.LegendaryGuild.LegendaryGuild;
 import com.legendaryrealms.LegendaryGuild.Menu.MenuLoader;
-import org.bukkit.Material;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GuildListLoader extends MenuLoader {
 
-    private Material guild_icon;
+    private com.cryptomorin.xseries.XMaterial guild_icon;
     private int guild_data;
     private int guild_model;
     private String guild_display;
@@ -31,7 +31,7 @@ public class GuildListLoader extends MenuLoader {
         return;
     }
 
-    public Material getGuild_icon() {
+    public XMaterial getGuild_icon() {
         return guild_icon;
     }
 

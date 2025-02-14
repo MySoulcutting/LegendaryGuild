@@ -50,7 +50,7 @@ public class RedPacketsPanel extends MenuDraw {
                     }
 
                     if (redpacket != null) {
-                        ItemStack i = new ItemStack(loader.getPacket_icon_bef(), 1, (short) loader.getPacket_data_bef());
+                        ItemStack i = new ItemStack(loader.getPacket_icon_bef().parseMaterial(), 1, (short) loader.getPacket_data_bef());
                         ItemMeta id = i.getItemMeta();
                         id.setDisplayName(loader.getPacket_display_bef());
                         List<String> lore = new ArrayList<>(loader.getPacket_lore_bef());
@@ -58,7 +58,7 @@ public class RedPacketsPanel extends MenuDraw {
                             id.setCustomModelData(loader.getPacket_model_bef());
                         }
                         if (redpacket.getHistory().containsKey(p.getName())) {
-                            i = new ItemStack(loader.getPacket_icon_after(), 1, (short) loader.getPacket_data_after());
+                            i = new ItemStack(loader.getPacket_icon_after().parseMaterial(), 1, (short) loader.getPacket_data_after());
                             id = i.getItemMeta();
                             id.setDisplayName(loader.getPacket_display_after());
                             lore = new ArrayList<>(loader.getPacket_lore_after());

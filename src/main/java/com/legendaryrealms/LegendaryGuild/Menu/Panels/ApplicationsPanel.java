@@ -46,7 +46,7 @@ public class ApplicationsPanel extends MenuDraw {
                     String player = application.getPlayer();
                     String date = application.getDate();
 
-                    ItemStack i = new ItemStack(loader.getApp_icon(),1,(short)loader.getApp_data());
+                    ItemStack i = new ItemStack(loader.getApp_icon().parseMaterial(),1,(short)loader.getApp_data());
                     ItemMeta id = i.getItemMeta();
                     id.setDisplayName(loader.getApp_display().replace("%player%",player));
                     List<String> lore = loader.getApp_lore();

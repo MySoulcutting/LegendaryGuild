@@ -56,7 +56,7 @@ public class StoresPanel extends MenuDraw {
                         //获取仓库数据
                         GuildStore.StoreData data = store.getData(in);
 
-                        ItemStack i = new ItemStack(loader.getStore_icon_unlock(),1,(short) loader.getStore_data_unlock());
+                        ItemStack i = new ItemStack(loader.getStore_icon_unlock().parseMaterial(),1,(short) loader.getStore_data_unlock());
                         ItemMeta id = i.getItemMeta();
                         id.setDisplayName(loader.getStore_display_unlock().replace("%id%",""+in));
                         List<String> lore = new ArrayList<>(loader.getStore_lore_unlock());
@@ -83,7 +83,7 @@ public class StoresPanel extends MenuDraw {
                         slotToId.put(getLayout().get(a),in);
                     }
                     else {
-                        ItemStack i = new ItemStack(loader.getStore_icon_locked(),1,(short) loader.getStore_data_locked());
+                        ItemStack i = new ItemStack(loader.getStore_icon_locked().parseMaterial(),1,(short) loader.getStore_data_locked());
                         ItemMeta id = i.getItemMeta();
                         id.setDisplayName(loader.getStore_display_locked().replace("%id%",""+in));
                         List<String> lore = new ArrayList<>(loader.getStore_lore_locked());

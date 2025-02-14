@@ -83,7 +83,7 @@ public class GuildListPanel extends MenuDraw {
                     String guildName = guild.getGuild();
                     GuildActivityData activityData = legendaryGuild.getGuildActivityDataManager().getData(guildName);
 
-                    ItemStack i = new ItemStack(loader.getGuild_icon(),1,(short) loader.getGuild_data());
+                    ItemStack i = new ItemStack(loader.getGuild_icon().parseMaterial(),1,(short) loader.getGuild_data());
                     if (icon != null){
                         i = new ItemStack(icon.getMaterial(),1,(short) icon.getData());
                     }

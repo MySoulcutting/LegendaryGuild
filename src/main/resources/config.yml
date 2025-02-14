@@ -202,13 +202,13 @@ settings:
       sound:
         #传送前每秒发送的音效
         #Sound effects sent per second before teleport
-        second: block_note_block_banjo
+        second: block.note_block.banjo
         #传送取消时的音效
         #Sound effects when teleport cancellation
-        cancel: entity_villager_trade
+        cancel: entity.villager.trade
         #传送音效
         #teleport sound
-        teleport: entity_enderman_teleport
+        teleport: entity.enderman.teleport
       #公会驻地设置不允许的世界名称
       #World names not allowed for guild residences
       black_world:
